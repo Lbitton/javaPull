@@ -1,6 +1,6 @@
 
 
-class test{
+class main{
 	public static void main(String arg[]){
                 TossCoin game = new TossCoin();
                         if(game.playTossCoin() == true)
