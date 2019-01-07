@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.*;
 
 class TossCoin{
-	public static void playTossCoin(){
+	public static boolean playTossCoin(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What are you betting on ? heads or tails:");
 		String choice = sc.nextLine();
@@ -20,14 +20,18 @@ class TossCoin{
 		}
 		System.out.println("The result is " + result);
 		if(result.equals(choice)){
-			System.out.println("You won !");
+			return true;
 		}else{
-			System.out.println("Pay up, loser !");
+			return false;
 		}
 	}
 
 	public static void main(String arg[]){
-		playTossCoin();
+		TossCoin game = new TossCoin();
+			if(game.playTossCoin() == true)
+				System.out.println("You win !");
+			else
+				System.out.println("you lose, pay up !");
 
 	}
 }
