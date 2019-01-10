@@ -8,6 +8,7 @@ class TCPServer{
     public static void main(String argv[]) throws Exception{
 	String connectSentence = "A system of cells interlinked within cells interlinked within cells interlinked within one stem... And dreadfully distinct against the dark, a tall white fountain played";
 	String received;
+	String sent;
 	ServerSocket welcomeSocket = new ServerSocket(4815);
 	System.out.println("Server is ready");
 
@@ -19,8 +20,12 @@ class TCPServer{
 	while(true){
 	    BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 	    received = inFromClient.readLine();
-	    System.out.println("Received : " + received);		     
+	    System.out.println("Received : " + received);
+
+	    DataOutputStream toClientCom = new DataOutputStream(connectionSocket.getOutputStream());
+	    BufferedReader outTo = new BufferedReader(new InputStreamReader(System.in));
+	    sent = outTo.readLine();
+	    toClientCom.writeBytes(sent + "\n");
 	}
-    }
- 
+    } 
 }
